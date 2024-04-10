@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('recipe_ingredients', function (Blueprint $table) {
             $table->id();
-            $table->integer('recipe_id');
-            $table->integer('ingredient_id');
+            $table->foreignId('recipe_id')->constrained('recipes')->onDelete('cascade');
+            $table->foreignId('ingredient_id')->constrained('ingredients')->onDelete('cascade');
             $table->float('quantity');
             $table->string('unit');
             $table->timestamps();
